@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScrollToBite — Luxury Viral Food Concierge</title>
+<title>ScrollToBite — Main Character Eats 💅</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,11 +11,11 @@
 <style>
   :root {
     --bg-dark: #070913;
-    --panel-bg: rgba(13, 17, 30, 0.82);
-    --card-bg: rgba(22, 28, 48, 0.75);
-    --card-hover: rgba(30, 39, 66, 0.95);
-    --border-color: rgba(255, 255, 255, 0.1);
-    --border-glow: rgba(255, 71, 87, 0.35);
+    --panel-bg: rgba(13, 17, 30, 0.85);
+    --card-bg: rgba(22, 28, 48, 0.78);
+    --card-hover: rgba(30, 39, 66, 0.98);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --border-glow: rgba(255, 71, 87, 0.38);
     --accent-coral: #ff4757;
     --accent-rose: #ff6b81;
     --accent-amber: #ffa502;
@@ -32,8 +32,8 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
     background: var(--bg-dark);
     background-image: 
-      radial-gradient(circle at 50% 0%, rgba(255, 71, 87, 0.18) 0%, transparent 60%),
-      radial-gradient(circle at 100% 100%, rgba(255, 165, 2, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 0%, rgba(255, 71, 87, 0.22) 0%, transparent 60%),
+      radial-gradient(circle at 100% 100%, rgba(255, 165, 2, 0.12) 0%, transparent 50%),
       radial-gradient(circle at 0% 50%, rgba(46, 213, 115, 0.08) 0%, transparent 45%);
     color: var(--text-primary);
     display: flex;
@@ -42,7 +42,7 @@
     overflow: hidden;
   }
 
-  /* --- Luxury Header --- */
+  /* --- Gen Z Header --- */
   header {
     background: var(--panel-bg);
     backdrop-filter: blur(24px);
@@ -63,7 +63,7 @@
   }
 
   .logo-icon {
-    font-size: 2rem;
+    font-size: 2.1rem;
     filter: drop-shadow(0 0 16px rgba(255, 71, 87, 0.6));
     animation: float 3s ease-in-out infinite;
   }
@@ -74,7 +74,7 @@
   }
 
   .logo-text {
-    font-size: 1.55rem;
+    font-size: 1.6rem;
     font-weight: 900;
     letter-spacing: -0.02em;
     background: var(--accent-gradient);
@@ -83,8 +83,8 @@
   }
 
   .logo-sub {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 700;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -104,8 +104,8 @@
     border: 1px solid rgba(46, 213, 115, 0.3);
     padding: 0.4rem 0.95rem;
     border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.82rem;
+    font-weight: 800;
     color: #2ed573;
     letter-spacing: 0.02em;
   }
@@ -129,9 +129,9 @@
   .quick-bar {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.7rem 2rem;
-    background: rgba(7, 9, 19, 0.6);
+    gap: 0.65rem;
+    padding: 0.75rem 2rem;
+    background: rgba(7, 9, 19, 0.65);
     border-bottom: 1px solid var(--border-color);
     overflow-x: auto;
     scrollbar-width: none;
@@ -140,12 +140,12 @@
   .quick-bar::-webkit-scrollbar { display: none; }
 
   .quick-pill {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    padding: 0.35rem 0.85rem;
-    font-size: 0.82rem;
-    font-weight: 600;
+    padding: 0.4rem 0.95rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: var(--text-secondary);
     cursor: pointer;
     white-space: nowrap;
@@ -153,10 +153,11 @@
   }
 
   .quick-pill:hover {
-    background: rgba(255, 71, 87, 0.15);
+    background: rgba(255, 71, 87, 0.18);
     border-color: var(--accent-coral);
     color: #ffffff;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.25);
   }
 
   /* --- Main Layout --- */
@@ -194,8 +195,8 @@
   .msg.agent { align-items: flex-start; }
 
   .avatar-label {
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.78rem;
+    font-weight: 800;
     color: var(--text-muted);
     margin-left: 0.5rem;
     text-transform: uppercase;
@@ -209,7 +210,7 @@
 
   .bubble {
     display: inline-block;
-    padding: 1.1rem 1.4rem;
+    padding: 1.15rem 1.45rem;
     border-radius: 22px;
     max-width: 100%;
     line-height: 1.55;
@@ -262,7 +263,7 @@
     border-radius: 16px;
     font-size: 0.98rem;
     font-family: inherit;
-    background: rgba(7, 9, 19, 0.8);
+    background: rgba(7, 9, 19, 0.85);
     color: #ffffff;
     outline: none;
     transition: all 0.2s ease;
@@ -381,36 +382,36 @@
     transform: scale(1.03);
   }
 
-  /* Free Google Maps Bar */
+  /* Free Google Maps Bar - Exact Restaurant + Location Query */
   .map-action-bar {
     display: flex;
     align-items: center;
     gap: 0.65rem;
-    margin-top: 0.65rem;
+    margin-top: 0.8rem;
     flex-wrap: wrap;
   }
 
   .map-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    background: rgba(46, 213, 115, 0.12);
-    border: 1px solid rgba(46, 213, 115, 0.3);
+    gap: 0.45rem;
+    background: rgba(46, 213, 115, 0.14);
+    border: 1px solid rgba(46, 213, 115, 0.35);
     color: #2ed573;
-    padding: 0.4rem 0.85rem;
-    border-radius: 12px;
-    font-size: 0.82rem;
-    font-weight: 700;
+    padding: 0.45rem 0.95rem;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    font-weight: 800;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
   .map-btn:hover {
-    background: rgba(46, 213, 115, 0.25);
+    background: rgba(46, 213, 115, 0.28);
     border-color: #2ed573;
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(46, 213, 115, 0.3);
+    box-shadow: 0 4px 16px rgba(46, 213, 115, 0.35);
   }
 
   .map-embed-container {
@@ -436,23 +437,23 @@
     <div class="logo-icon">🔥</div>
     <div>
       <div class="logo-text">ScrollToBite</div>
-      <div class="logo-sub">Luxury Viral Food Concierge</div>
+      <div class="logo-sub">Main Character Eats 💅 • Viral Food Finder</div>
     </div>
   </div>
   <div class="header-actions">
     <div class="status-badge">
       <div class="pulse-dot"></div>
-      <span>Vertex AI Agent Engine</span>
+      <span>Locked In • Vertex AI</span>
     </div>
   </div>
 </header>
 
 <div class="quick-bar">
-  <div class="quick-pill" onclick="sendQuick('Show my saved wishlist spots for Bay Area')">📍 Bay Area Wishlist</div>
-  <div class="quick-pill" onclick="sendQuick('Save this link: https://www.tiktok.com/@bayareafoodz/video/7410129571867086123')">🌮 Save TikTok Birria Taco</div>
-  <div class="quick-pill" onclick="sendQuick('Save this link: https://www.instagram.com/p/DawZsF2p36I/')">🍲 Save IG Hotpot Link</div>
-  <div class="quick-pill" onclick="sendQuick('Recommend trending viral food in San Jose')">🔥 San Jose Viral Eats</div>
-  <div class="quick-pill" onclick="sendQuick('Recommend top viral pizza in New York')">🍕 NYC Pizza Spots</div>
+  <div class="quick-pill" onclick="sendQuick('Show my saved wishlist spots for Bay Area')">📍 Bay Area Slaps</div>
+  <div class="quick-pill" onclick="sendQuick('Save this link: https://www.tiktok.com/@bayareafoodz/video/7410129571867086123')">🌮 Save Birria Taco Reel</div>
+  <div class="quick-pill" onclick="sendQuick('Save this link: https://www.instagram.com/p/DawZsF2p36I/')">🍲 Save Hotpot IG Reel</div>
+  <div class="quick-pill" onclick="sendQuick('Recommend viral food spots in San Jose')">🔥 San Jose Viral Eats</div>
+  <div class="quick-pill" onclick="sendQuick('Recommend top viral pizza in New York')">🍕 NYC Viral Slice</div>
   <div class="quick-pill" onclick="sendQuick('What food spots do I have saved in NYC?')">🌆 NYC Wishlist</div>
 </div>
 
@@ -461,7 +462,7 @@
 </main>
 
 <form id="form">
-  <input type="text" id="input" placeholder="Paste a TikTok/IG link or ask 'Show saved spots for San Jose'..." autocomplete="off" />
+  <input type="text" id="input" placeholder="Drop a TikTok/IG link or ask 'Show saved spots in San Jose'..." autocomplete="off" />
   <button type="submit">
     <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
     <span>Send</span>
@@ -503,28 +504,28 @@ function childIds(spec) {
   return [];
 }
 
-// Google Maps Embed & Link Helper
-function createGoogleMapBar(locStr) {
+// Google Maps Search Generator: Exact Restaurant Name + Location
+function createGoogleMapBar(queryStr) {
   const bar = el("div", "map-action-bar");
   
-  // Free Google Maps Search Link
+  // Free Google Maps Direct Search
   const link = el("a", "map-btn");
-  link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locStr)}`;
+  link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(queryStr)}`;
   link.target = "_blank";
-  link.innerHTML = `<span class="material-symbols-outlined" style="font-size:16px;">map</span><span>Open in Google Maps</span>`;
+  link.innerHTML = `<span class="material-symbols-outlined" style="font-size:16px;">map</span><span>Google Maps: "${queryStr}"</span>`;
   bar.appendChild(link);
 
   // Free Google Maps Embed Toggle
   const toggleBtn = el("button", "map-btn");
   toggleBtn.type = "button";
   toggleBtn.style.background = "rgba(255, 165, 2, 0.12)";
-  toggleBtn.style.borderColor = "rgba(255, 165, 2, 0.3)";
+  toggleBtn.style.borderColor = "rgba(255, 165, 2, 0.35)";
   toggleBtn.style.color = "#ffa502";
   toggleBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:16px;">explore</span><span>Toggle Map Embed</span>`;
 
   const mapContainer = el("div", "map-embed-container");
   const iframe = el("iframe");
-  iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(locStr)}&output=embed`;
+  iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(queryStr)}&output=embed`;
   iframe.width = "100%";
   iframe.height = "220";
   iframe.style.border = "0";
@@ -541,6 +542,37 @@ function createGoogleMapBar(locStr) {
   return wrapper;
 }
 
+// Helper to extract exact restaurant name & location from card text specs
+function extractSpotDetails(cardSpec, comps) {
+  let restName = "";
+  let location = "";
+
+  function walk(id) {
+    if (!id || !comps[id]) return;
+    const spec = comps[id];
+    const type = Object.keys(spec)[0];
+    const props = spec[type] || {};
+
+    if (type === "Text") {
+      const txt = boundStr(props.text);
+      if ((props.usageHint === "h2" || props.usageHint === "h3") && !restName) {
+        restName = txt.replace(/^[^\w\s]+/, "").trim(); // strip leading emoji
+      } else if (!restName && txt && !txt.toLowerCase().includes("location:") && !txt.toLowerCase().includes("status:") && !txt.toLowerCase().includes("dish:") && !txt.toLowerCase().includes("saved")) {
+        restName = txt.replace(/^[^\w\s]+/, "").trim();
+      }
+
+      if (txt.toLowerCase().includes("location:")) {
+        location = txt.replace(/^location:/i, "").trim();
+      }
+    }
+
+    for (const cid of childIds(props)) walk(cid);
+  }
+
+  walk(cardSpec.child);
+  return { restName, location };
+}
+
 function buildNode(id, comps, visited) {
   if (!id || visited.has(id) || !comps[id]) return null;
   visited.add(id);
@@ -553,6 +585,22 @@ function buildNode(id, comps, visited) {
       const card = el("div", "a2card");
       const child = buildNode(props.child, comps, visited);
       if (child) card.appendChild(child);
+
+      // Extract spot name & location to append exact restaurant Google Maps bar
+      const details = extractSpotDetails(props, comps);
+      let queryStr = "";
+      if (details.restName && details.location) {
+        queryStr = `${details.restName}, ${details.location}`;
+      } else if (details.restName) {
+        queryStr = details.restName;
+      } else if (details.location) {
+        queryStr = details.location;
+      }
+
+      if (queryStr) {
+        card.appendChild(createGoogleMapBar(queryStr));
+      }
+
       return card;
     }
     case "Column": {
@@ -580,18 +628,6 @@ function buildNode(id, comps, visited) {
       
       const txtVal = boundStr(props.text);
       t.textContent = txtVal;
-
-      // Auto-detect location strings and append Google Maps bar
-      if (txtVal.toLowerCase().startsWith("location:") || txtVal.toLowerCase().includes("address:") || txtVal.includes("500 W San Carlos") || txtVal.includes("San Jose") || txtVal.includes("San Francisco") || txtVal.includes("New York")) {
-        const wrap = el("div");
-        wrap.appendChild(t);
-        const locClean = txtVal.replace(/^(location|address):/i, "").trim();
-        if (locClean.length > 2) {
-          wrap.appendChild(createGoogleMapBar(locClean));
-        }
-        return wrap;
-      }
-
       return t;
     }
     case "Divider":
@@ -714,7 +750,7 @@ form.addEventListener("submit", (e) => {
 // Welcome message on launch
 window.addEventListener("DOMContentLoaded", () => {
   const welcomeBubble = appendAgentBubble();
-  welcomeBubble.innerHTML = "<strong>Hey Foodie! 👋 Welcome to ScrollToBite Luxury Food Concierge.</strong><br><br>I automatically parse shared TikTok/Instagram links to extract restaurant details, show your saved wishlist spots with interactive Google Maps & high-res photos, or recommend viral food in any city!";
+  welcomeBubble.innerHTML = "<strong>Yo Foodie! 👋 Welcome to ScrollToBite 💅</strong><br><br>Drop a TikTok or IG reel link and I'll lock in the exact restaurant details, high-res photos, and Google Maps pin. No cap!";
 });
 </script>
 </body>
