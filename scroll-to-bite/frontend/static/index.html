@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScrollToBite — Viral Food Concierge</title>
+<title>ScrollToBite — Luxury Viral Food Concierge</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 <style>
   :root {
-    --bg-dark: #070a12;
-    --panel-bg: rgba(15, 23, 42, 0.75);
-    --card-bg: rgba(30, 41, 59, 0.65);
-    --card-hover: rgba(30, 41, 59, 0.9);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-glow: rgba(255, 71, 87, 0.3);
+    --bg-dark: #070913;
+    --panel-bg: rgba(13, 17, 30, 0.82);
+    --card-bg: rgba(22, 28, 48, 0.75);
+    --card-hover: rgba(30, 39, 66, 0.95);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-glow: rgba(255, 71, 87, 0.35);
     --accent-coral: #ff4757;
+    --accent-rose: #ff6b81;
     --accent-amber: #ffa502;
     --accent-emerald: #2ed573;
     --accent-gradient: linear-gradient(135deg, #ff4757 0%, #ff6b81 50%, #ffa502 100%);
@@ -31,8 +32,9 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
     background: var(--bg-dark);
     background-image: 
-      radial-gradient(circle at 50% 0%, rgba(255, 71, 87, 0.15) 0%, transparent 60%),
-      radial-gradient(circle at 100% 100%, rgba(255, 165, 2, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 50% 0%, rgba(255, 71, 87, 0.18) 0%, transparent 60%),
+      radial-gradient(circle at 100% 100%, rgba(255, 165, 2, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 0% 50%, rgba(46, 213, 115, 0.08) 0%, transparent 45%);
     color: var(--text-primary);
     display: flex;
     flex-direction: column;
@@ -40,16 +42,17 @@
     overflow: hidden;
   }
 
+  /* --- Luxury Header --- */
   header {
     background: var(--panel-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border-color);
-    padding: 0.9rem 2rem;
+    padding: 0.85rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     z-index: 100;
   }
 
@@ -60,8 +63,8 @@
   }
 
   .logo-icon {
-    font-size: 1.8rem;
-    filter: drop-shadow(0 0 12px rgba(255, 71, 87, 0.5));
+    font-size: 2rem;
+    filter: drop-shadow(0 0 16px rgba(255, 71, 87, 0.6));
     animation: float 3s ease-in-out infinite;
   }
 
@@ -71,7 +74,7 @@
   }
 
   .logo-text {
-    font-size: 1.45rem;
+    font-size: 1.55rem;
     font-weight: 900;
     letter-spacing: -0.02em;
     background: var(--accent-gradient);
@@ -79,18 +82,32 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .logo-sub {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .status-badge {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(46, 213, 115, 0.1);
-    border: 1px solid rgba(46, 213, 115, 0.25);
-    padding: 0.35rem 0.85rem;
+    gap: 0.55rem;
+    background: rgba(46, 213, 115, 0.12);
+    border: 1px solid rgba(46, 213, 115, 0.3);
+    padding: 0.4rem 0.95rem;
     border-radius: 20px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: #2ed573;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
   }
 
   .pulse-dot {
@@ -108,46 +125,52 @@
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 213, 115, 0); }
   }
 
-  .quick-pills {
-    display: flex;
-    gap: 0.6rem;
-    overflow-x: auto;
-    padding: 0.85rem 1.5rem;
-    background: rgba(10, 15, 26, 0.6);
-    border-bottom: 1px solid var(--border-color);
-    scrollbar-width: none;
-  }
-  .quick-pills::-webkit-scrollbar { display: none; }
-
-  .pill {
-    background: rgba(30, 41, 59, 0.5);
-    color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.45rem 1rem;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  /* --- Quick Interactive Bar --- */
+  .quick-bar {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.6rem;
+    padding: 0.7rem 2rem;
+    background: rgba(7, 9, 19, 0.6);
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  .pill:hover {
+  .quick-bar::-webkit-scrollbar { display: none; }
+
+  .quick-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .quick-pill:hover {
     background: rgba(255, 71, 87, 0.15);
     border-color: var(--accent-coral);
-    color: var(--accent-coral);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(255, 71, 87, 0.2);
+    color: #ffffff;
+    transform: translateY(-1px);
   }
 
-  #log {
+  /* --- Main Layout --- */
+  main {
     flex: 1;
     overflow-y: auto;
-    padding: 1.5rem;
-    max-width: 880px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .chat-container {
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -158,12 +181,12 @@
   .msg {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-    animation: slideFadeIn 0.3s ease-out forwards;
+    gap: 0.35rem;
+    animation: slideFadeIn 0.35s ease-out forwards;
   }
 
   @keyframes slideFadeIn {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
@@ -176,56 +199,56 @@
     color: var(--text-muted);
     margin-left: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
   .msg.user .avatar-label { margin-right: 0.5rem; }
 
   .bubble {
     display: inline-block;
-    padding: 0.95rem 1.35rem;
-    border-radius: 20px;
-    background: var(--panel-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    text-align: left;
-    max-width: 85%;
-    white-space: pre-wrap;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    padding: 1.1rem 1.4rem;
+    border-radius: 22px;
+    max-width: 100%;
+    line-height: 1.55;
+    font-size: 0.98rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
   }
 
   .msg.user .bubble {
     background: var(--accent-gradient);
     color: #ffffff;
-    border: none;
     font-weight: 600;
     border-bottom-right-radius: 4px;
-    box-shadow: 0 4px 20px rgba(255, 71, 87, 0.3);
   }
 
   .msg.agent .bubble {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
     border-bottom-left-radius: 4px;
+    width: 100%;
+    backdrop-filter: blur(16px);
   }
 
   .bubble.rich {
     background: transparent;
     border: none;
     padding: 0;
-    max-width: 100%;
-    white-space: normal;
     box-shadow: none;
   }
 
+  /* --- Bottom Input Form --- */
   form {
     display: flex;
     gap: 0.75rem;
     padding: 1.1rem 1.5rem;
     border-top: 1px solid var(--border-color);
     background: var(--panel-bg);
-    backdrop-filter: blur(20px);
-    max-width: 880px;
+    backdrop-filter: blur(24px);
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
     border-radius: 24px 24px 0 0;
@@ -234,15 +257,15 @@
 
   input {
     flex: 1;
-    padding: 0.9rem 1.25rem;
+    padding: 0.95rem 1.35rem;
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-family: inherit;
-    background: rgba(7, 10, 18, 0.75);
+    background: rgba(7, 9, 19, 0.8);
     color: #ffffff;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s ease;
   }
 
   input:focus {
@@ -251,85 +274,158 @@
   }
 
   button {
-    padding: 0.9rem 1.75rem;
+    padding: 0.95rem 1.85rem;
     border: none;
     border-radius: 16px;
     background: var(--accent-gradient);
     color: #fff;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-family: inherit;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 16px rgba(255, 71, 87, 0.35);
+    box-shadow: 0 4px 20px rgba(255, 71, 87, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   button:hover {
-    transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 6px 24px rgba(255, 71, 87, 0.5);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 28px rgba(255, 71, 87, 0.55);
   }
 
-  /* --- A2UI component styles --- */
+  /* --- A2UI Card & Component Styles --- */
   .a2card {
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 1.35rem;
+    border-radius: 22px;
+    padding: 1.45rem;
     background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
     max-width: 100%;
     color: var(--text-primary);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 4px solid var(--accent-coral);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .a2card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(255, 71, 87, 0.12) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .a2card:hover {
     background: var(--card-hover);
     border-color: var(--border-glow);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 36px rgba(255, 71, 87, 0.18);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 42px rgba(255, 71, 87, 0.2);
   }
 
-  .a2card + .a2card, .a2col > .a2card { margin-top: 0.85rem; }
-  .a2col { display: flex; flex-direction: column; gap: 0.65rem; }
-  .a2row { display: flex; flex-direction: row; gap: 0.85rem; align-items: center; flex-wrap: wrap; }
+  .a2card + .a2card, .a2col > .a2card { margin-top: 0.95rem; }
+  .a2col { display: flex; flex-direction: column; gap: 0.75rem; }
+  .a2row { display: flex; flex-direction: row; gap: 0.95rem; align-items: center; flex-wrap: wrap; }
   .a2row.between { justify-content: space-between; }
 
-  .a2text { margin: 0; line-height: 1.45; color: var(--text-primary); }
-  .a2text.a2-h1 { font-size: 1.55rem; font-weight: 900; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .a2text.a2-h2 { font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em; }
-  .a2text.a2-h3 { font-size: 1.15rem; font-weight: 700; color: #f1f5f9; }
-  .a2text.a2-body { font-size: 0.95rem; color: #cbd5e1; }
-  .a2text.a2-caption { font-size: 0.85rem; color: var(--accent-amber); font-weight: 600; background: rgba(255, 165, 2, 0.1); padding: 0.25rem 0.6rem; border-radius: 8px; display: inline-block; width: fit-content; }
+  .a2text { margin: 0; line-height: 1.5; color: var(--text-primary); }
+  .a2text.a2-h1 { font-size: 1.6rem; font-weight: 900; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .a2text.a2-h2 { font-size: 1.35rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em; }
+  .a2text.a2-h3 { font-size: 1.2rem; font-weight: 800; color: #ffffff; }
+  .a2text.a2-body { font-size: 0.98rem; color: #cbd5e1; }
+  .a2text.a2-caption { 
+    font-size: 0.85rem; 
+    color: var(--accent-amber); 
+    font-weight: 700; 
+    background: rgba(255, 165, 2, 0.12); 
+    border: 1px solid rgba(255, 165, 2, 0.25);
+    padding: 0.3rem 0.7rem; 
+    border-radius: 10px; 
+    display: inline-block; 
+    width: fit-content; 
+  }
 
-  .a2divider { border: none; border-top: 1px solid var(--border-color); margin: 0.6rem 0; width: 100%; }
+  .a2divider { border: none; border-top: 1px solid var(--border-color); margin: 0.75rem 0; width: 100%; }
 
+  /* Full aspect photo container */
   .a2img-container {
     overflow: hidden;
-    border-radius: 14px;
-    margin: 0.4rem 0;
-    max-height: 260px;
+    border-radius: 16px;
+    margin: 0.75rem 0;
+    max-height: 420px;
     position: relative;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border-color);
   }
 
   .a2img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
+    border-radius: 12px;
     transition: transform 0.5s ease;
   }
 
-  .a2card:hover .a2img {
-    transform: scale(1.04);
+  .a2img-container:hover .a2img {
+    transform: scale(1.03);
   }
 
-  .material-symbols-outlined {
-    font-family: 'Material Symbols Outlined';
-    font-size: 1.2rem;
-    vertical-align: middle;
-    color: var(--accent-coral);
+  /* Free Google Maps Bar */
+  .map-action-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.65rem;
+    flex-wrap: wrap;
+  }
+
+  .map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(46, 213, 115, 0.12);
+    border: 1px solid rgba(46, 213, 115, 0.3);
+    color: #2ed573;
+    padding: 0.4rem 0.85rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .map-btn:hover {
+    background: rgba(46, 213, 115, 0.25);
+    border-color: #2ed573;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(46, 213, 115, 0.3);
+  }
+
+  .map-embed-container {
+    width: 100%;
+    margin-top: 0.75rem;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    display: none;
+  }
+
+  .map-embed-container.active {
+    display: block;
+    animation: slideFadeIn 0.3s ease-out;
   }
 </style>
 </head>
@@ -337,30 +433,39 @@
 
 <header>
   <div class="logo-container">
-    <span class="logo-icon">🍕</span>
+    <div class="logo-icon">🔥</div>
     <div>
       <div class="logo-text">ScrollToBite</div>
+      <div class="logo-sub">Luxury Viral Food Concierge</div>
     </div>
   </div>
-  <div class="status-badge">
-    <div class="pulse-dot"></div>
-    <span>Vertex AI Agent Runtime</span>
+  <div class="header-actions">
+    <div class="status-badge">
+      <div class="pulse-dot"></div>
+      <span>Vertex AI Agent Engine</span>
+    </div>
   </div>
 </header>
 
-<div class="quick-pills">
-  <div class="pill" onclick="sendQuick('Show my saved spots for Bay Area')">📍 SF Wishlist</div>
-  <div class="pill" onclick="sendQuick('What are the top viral spots in Mountain View, CA?')">🍦 Mountain View Trending</div>
-  <div class="pill" onclick="sendQuick('Show my wishlist for NYC')">🍕 NYC Wishlist</div>
-  <div class="pill" onclick="sendQuick('What are trending viral spots in Los Angeles?')">🌮 LA Trending</div>
-  <div class="pill" onclick="sendQuick('Save this link: https://www.instagram.com/p/DbpFXyQBJYe/')">➕ Test IG Link Fetch</div>
+<div class="quick-bar">
+  <div class="quick-pill" onclick="sendQuick('Show my saved wishlist spots for Bay Area')">📍 Bay Area Wishlist</div>
+  <div class="quick-pill" onclick="sendQuick('Save this link: https://www.tiktok.com/@bayareafoodz/video/7410129571867086123')">🌮 Save TikTok Birria Taco</div>
+  <div class="quick-pill" onclick="sendQuick('Save this link: https://www.instagram.com/p/DawZsF2p36I/')">🍲 Save IG Hotpot Link</div>
+  <div class="quick-pill" onclick="sendQuick('Recommend trending viral food in San Jose')">🔥 San Jose Viral Eats</div>
+  <div class="quick-pill" onclick="sendQuick('Recommend top viral pizza in New York')">🍕 NYC Pizza Spots</div>
+  <div class="quick-pill" onclick="sendQuick('What food spots do I have saved in NYC?')">🌆 NYC Wishlist</div>
 </div>
 
-<div id="log"></div>
+<main>
+  <div class="chat-container" id="log"></div>
+</main>
 
 <form id="form">
-  <input id="input" placeholder="Paste a TikTok/Instagram link or ask for food spots..." autocomplete="off" autofocus>
-  <button>Send</button>
+  <input type="text" id="input" placeholder="Paste a TikTok/IG link or ask 'Show saved spots for San Jose'..." autocomplete="off" />
+  <button type="submit">
+    <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
+    <span>Send</span>
+  </button>
 </form>
 
 <script>
@@ -396,6 +501,44 @@ function childIds(spec) {
   if (typeof spec.child === "string") return [spec.child];
   if (spec.children && Array.isArray(spec.children.explicitList)) return spec.children.explicitList.filter(x => typeof x === "string");
   return [];
+}
+
+// Google Maps Embed & Link Helper
+function createGoogleMapBar(locStr) {
+  const bar = el("div", "map-action-bar");
+  
+  // Free Google Maps Search Link
+  const link = el("a", "map-btn");
+  link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locStr)}`;
+  link.target = "_blank";
+  link.innerHTML = `<span class="material-symbols-outlined" style="font-size:16px;">map</span><span>Open in Google Maps</span>`;
+  bar.appendChild(link);
+
+  // Free Google Maps Embed Toggle
+  const toggleBtn = el("button", "map-btn");
+  toggleBtn.type = "button";
+  toggleBtn.style.background = "rgba(255, 165, 2, 0.12)";
+  toggleBtn.style.borderColor = "rgba(255, 165, 2, 0.3)";
+  toggleBtn.style.color = "#ffa502";
+  toggleBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:16px;">explore</span><span>Toggle Map Embed</span>`;
+
+  const mapContainer = el("div", "map-embed-container");
+  const iframe = el("iframe");
+  iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(locStr)}&output=embed`;
+  iframe.width = "100%";
+  iframe.height = "220";
+  iframe.style.border = "0";
+  iframe.loading = "lazy";
+  mapContainer.appendChild(iframe);
+
+  toggleBtn.addEventListener("click", () => {
+    mapContainer.classList.toggle("active");
+  });
+
+  const wrapper = el("div");
+  wrapper.appendChild(bar);
+  wrapper.appendChild(mapContainer);
+  return wrapper;
 }
 
 function buildNode(id, comps, visited) {
@@ -434,7 +577,21 @@ function buildNode(id, comps, visited) {
       if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(hint)) t.classList.add("a2-" + hint);
       else if (hint === "caption") t.classList.add("a2-caption");
       else t.classList.add("a2-body");
-      t.textContent = boundStr(props.text);
+      
+      const txtVal = boundStr(props.text);
+      t.textContent = txtVal;
+
+      // Auto-detect location strings and append Google Maps bar
+      if (txtVal.toLowerCase().startsWith("location:") || txtVal.toLowerCase().includes("address:") || txtVal.includes("500 W San Carlos") || txtVal.includes("San Jose") || txtVal.includes("San Francisco") || txtVal.includes("New York")) {
+        const wrap = el("div");
+        wrap.appendChild(t);
+        const locClean = txtVal.replace(/^(location|address):/i, "").trim();
+        if (locClean.length > 2) {
+          wrap.appendChild(createGoogleMapBar(locClean));
+        }
+        return wrap;
+      }
+
       return t;
     }
     case "Divider":
@@ -557,7 +714,7 @@ form.addEventListener("submit", (e) => {
 // Welcome message on launch
 window.addEventListener("DOMContentLoaded", () => {
   const welcomeBubble = appendAgentBubble();
-  welcomeBubble.innerHTML = "<strong>Hey Foodie! 👋 Welcome to ScrollToBite.</strong><br><br>I can parse shared TikTok/Instagram links to extract restaurant details, show your saved wishlist spots across SF, LA, and NYC, or recommend trending viral food in any city!";
+  welcomeBubble.innerHTML = "<strong>Hey Foodie! 👋 Welcome to ScrollToBite Luxury Food Concierge.</strong><br><br>I automatically parse shared TikTok/Instagram links to extract restaurant details, show your saved wishlist spots with interactive Google Maps & high-res photos, or recommend viral food in any city!";
 });
 </script>
 </body>

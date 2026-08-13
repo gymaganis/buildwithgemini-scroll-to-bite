@@ -1,47 +1,62 @@
 [
   {
     "id": "1",
+    "restaurant": "Con Sabor A Mexico Food Truck",
+    "dish": "Giant Birria Taco & Short Rib Tacos",
+    "location": "San Jose, Bay Area",
+    "url": "https://www.tiktok.com/@bayareafoodz/video/7410129571867086123",
+    "image_url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/99767951c50c46129acb972bc62124b7_1725305251~tplv-tiktokx-origin.image?dr=9636&x-expires=1786831200&x-signature=Ys4Ljsrn4gPvj8llwLlCuO%2BMJmE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+    "status": "Want to Try",
+    "notes": "500 W San Carlos St, San Jose \u2014 World's biggest Birria taco trending on TikTok"
+  },
+  {
+    "id": "2",
+    "restaurant": "Ben's Sandwiches",
+    "dish": "Crispy Pork & Pate Banh Mi",
+    "location": "San Jose, Bay Area",
+    "url": "https://www.instagram.com/p/DbpFXyQBJYe/",
+    "image_url": "https://images.unsplash.com/photo-1626804475297-4160820cca34?auto=format&fit=crop&w=600&q=80",
+    "status": "Want to Try",
+    "notes": "221 E San Fernando St, San Jose \u2014 Viral banh mi post on Instagram"
+  },
+  {
+    "id": "3",
     "restaurant": "L'Industrie Pizzeria",
     "dish": "Burrata Slice & Hot Honey",
     "location": "New York, NYC",
     "url": "https://www.tiktok.com/@foodie/video/7123456789",
+    "image_url": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
     "status": "Want to Try",
     "notes": "Viral TikTok pizza slice in Williamsburg & West Village"
   },
   {
-    "id": "2",
+    "id": "4",
     "restaurant": "7th Street Burger",
     "dish": "Double Cheeseburger & Loaded Fries",
     "location": "New York, NYC",
     "url": "https://www.instagram.com/reel/C123456789",
+    "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
     "status": "Want to Try",
     "notes": "Classic NYC smash burger trending on IG"
   },
   {
-    "id": "3",
+    "id": "5",
     "restaurant": "Marugame Udon",
     "dish": "Nikutama Udon & Tempura",
     "location": "San Francisco, Bay Area",
     "url": "https://www.tiktok.com/@bayareaeats/video/7987654321",
+    "image_url": "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?auto=format&fit=crop&w=600&q=80",
     "status": "Want to Try",
     "notes": "Handmade sanuki udon in SF Stonestown & Berkeley"
   },
   {
-    "id": "4",
+    "id": "6",
     "restaurant": "Howlin' Ray's",
     "dish": "Sando (Nashville Hot Chicken Sandwich)",
     "location": "Los Angeles, SoCal",
     "url": "https://www.instagram.com/reel/C987654321",
+    "image_url": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=600&q=80",
     "status": "Want to Try",
     "notes": "Chinatown LA viral hot chicken sando"
-  },
-  {
-    "id": "5",
-    "restaurant": "SomiSomi",
-    "dish": "Signature Dish",
-    "location": "Mountain View, CA",
-    "url": "https://www.tiktok.com/@foodie/video/somisomi",
-    "status": "Want to Try",
-    "notes": "Saved from shared social media link"
   }
 ]

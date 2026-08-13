@@ -23,6 +23,26 @@ DB_FILE = Path(__file__).parent / "wishlist_db.json"
 DEFAULT_WISHLIST: List[Dict[str, Any]] = [
     {
         "id": "1",
+        "restaurant": "Con Sabor A Mexico Food Truck",
+        "dish": "Giant Birria Taco & Short Rib Tacos",
+        "location": "San Jose, Bay Area",
+        "url": "https://www.tiktok.com/@bayareafoodz/video/7410129571867086123",
+        "image_url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/99767951c50c46129acb972bc62124b7_1725305251~tplv-tiktokx-origin.image?dr=9636&x-expires=1786831200&x-signature=Ys4Ljsrn4gPvj8llwLlCuO%2BMJmE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "status": "Want to Try",
+        "notes": "500 W San Carlos St, San Jose — World's biggest Birria taco trending on TikTok",
+    },
+    {
+        "id": "2",
+        "restaurant": "Ben's Sandwiches",
+        "dish": "Crispy Pork & Pate Banh Mi",
+        "location": "San Jose, Bay Area",
+        "url": "https://www.instagram.com/p/DbpFXyQBJYe/",
+        "image_url": "https://images.unsplash.com/photo-1626804475297-4160820cca34?auto=format&fit=crop&w=600&q=80",
+        "status": "Want to Try",
+        "notes": "221 E San Fernando St, San Jose — Viral banh mi post on Instagram",
+    },
+    {
+        "id": "3",
         "restaurant": "L'Industrie Pizzeria",
         "dish": "Burrata Slice & Hot Honey",
         "location": "New York, NYC",
@@ -32,7 +52,7 @@ DEFAULT_WISHLIST: List[Dict[str, Any]] = [
         "notes": "Viral TikTok pizza slice in Williamsburg & West Village",
     },
     {
-        "id": "2",
+        "id": "4",
         "restaurant": "7th Street Burger",
         "dish": "Double Cheeseburger & Loaded Fries",
         "location": "New York, NYC",
@@ -42,7 +62,7 @@ DEFAULT_WISHLIST: List[Dict[str, Any]] = [
         "notes": "Classic NYC smash burger trending on IG",
     },
     {
-        "id": "3",
+        "id": "5",
         "restaurant": "Marugame Udon",
         "dish": "Nikutama Udon & Tempura",
         "location": "San Francisco, Bay Area",
@@ -52,7 +72,7 @@ DEFAULT_WISHLIST: List[Dict[str, Any]] = [
         "notes": "Handmade sanuki udon in SF Stonestown & Berkeley",
     },
     {
-        "id": "4",
+        "id": "6",
         "restaurant": "Howlin' Ray's",
         "dish": "Sando (Nashville Hot Chicken Sandwich)",
         "location": "Los Angeles, SoCal",
@@ -178,7 +198,7 @@ import urllib.request
 
 
 def fetch_social_url_metadata(url: str) -> dict:
-    """Fetches OpenGraph or caption metadata from TikTok/Instagram links to extract food spot details."""
+    """Fetches OpenGraph, oEmbed, or caption metadata from TikTok/Instagram links to extract food spot details and real social thumbnails."""
     meta = {
         "restaurant": None,
         "dish": None,
@@ -199,6 +219,16 @@ def fetch_social_url_metadata(url: str) -> dict:
             try:
                 with urllib.request.urlopen(req, timeout=5) as resp:
                     raw_html = resp.read().decode("utf-8", errors="ignore")
+                    
+                    # Extract high-res cover image from Instagram embed HTML
+                    all_img_urls = re.findall(r'(https://[^\s\"\'\<\>]+?(?:cdninstagram|scontent)[^\s\"\'\<\>]+)', raw_html)
+                    for u in all_img_urls:
+                        u_clean = html_lib.unescape(u)
+                        if any(k in u_clean for k in ['t51.82787-15', 't51.2885-15', 'ig_cache_key', 'video_default_cover_frame', 'dst-jpg']):
+                            if 's150x150' not in u_clean and 's100x100' not in u_clean:
+                                meta["image_url"] = u_clean
+                                break
+
                     cap_match = re.search(r'class="Caption"[^>]*>(.*?)</div>', raw_html, re.S)
                     if cap_match:
                         raw_caption = cap_match.group(1)
@@ -206,13 +236,22 @@ def fetch_social_url_metadata(url: str) -> dict:
                         clean_caption = html_lib.unescape(clean_caption)
                         clean_caption = " ".join(clean_caption.split())
 
-                        meta["notes"] = f'Caption: "{clean_caption[:180]}..."'
+                        meta["notes"] = f'Instagram Post: "{clean_caption[:180]}..."'
+
+                        # Parse restaurant name from pin emoji or @handles
+                        pin_match = re.search(r'📍\s*([^,\n\t\.\!\?]+)', clean_caption)
+                        if pin_match:
+                            rest_raw = pin_match.group(1).strip()
+                            rest_clean = re.sub(r'[^A-Za-z0-9\s\'-]', '', rest_raw).strip()
+                            if rest_clean:
+                                meta["restaurant"] = rest_clean.title()
 
                         handles = re.findall(r"@([A-Za-z0-9_.]+)", clean_caption)
-                        if handles:
+                        if handles and not meta["restaurant"]:
                             rest_handle = handles[0]
                             rest_name = (
                                 rest_handle.replace("bensandwiches1", "Ben's Sandwiches")
+                                .replace("happylambofficial", "Happy Lamb Hotpot")
                                 .replace("_", " ")
                                 .replace(".", " ")
                                 .title()
@@ -220,21 +259,19 @@ def fetch_social_url_metadata(url: str) -> dict:
                             meta["restaurant"] = rest_name
 
                         cap_lower = clean_caption.lower()
-                        if "banh mi" in cap_lower:
+                        if "hotpot" in cap_lower:
+                            meta["dish"] = "All-You-Can-Eat Hotpot Buffet"
+                        elif "banh mi" in cap_lower:
                             meta["dish"] = "Crispy Pork & Pate Banh Mi"
-                            meta["image_url"] = "https://images.unsplash.com/photo-1626804475297-4160820cca34?auto=format&fit=crop&w=600&q=80"
                         elif "ramen" in cap_lower:
                             meta["dish"] = "Rich Tonkotsu Ramen"
-                            meta["image_url"] = "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80"
                         elif "pizza" in cap_lower:
                             meta["dish"] = "Artisanal Slice"
-                            meta["image_url"] = "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80"
-                        elif "taco" in cap_lower:
-                            meta["dish"] = "Street Tacos"
-                            meta["image_url"] = "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80"
+                        elif "taco" in cap_lower or "birria" in cap_lower:
+                            meta["dish"] = "Giant Birria Taco"
 
                         loc_match = re.search(r"📍\s*([^,\n]+(?:,\s*[^,\n]+)*)", clean_caption)
-                        if loc_match:
+                        if loc_match and not meta["location"]:
                             loc_str = loc_match.group(1).strip()
                             loc_str = re.sub(r"View all.*$", "", loc_str, flags=re.I).strip()
                             meta["location"] = loc_str
@@ -242,6 +279,8 @@ def fetch_social_url_metadata(url: str) -> dict:
                             meta["location"] = "San Jose, Bay Area"
                         elif "san francisco" in cap_lower or "sf" in cap_lower:
                             meta["location"] = "San Francisco, Bay Area"
+                        elif "bay" in cap_lower or "norcal" in cap_lower:
+                            meta["location"] = "Bay Area"
             except Exception:
                 pass
 
@@ -256,9 +295,38 @@ def fetch_social_url_metadata(url: str) -> dict:
                 data = json.loads(resp.read().decode("utf-8"))
                 title = data.get("title", "")
                 author = data.get("author_name", "")
-                meta["notes"] = f'TikTok by @{author}: "{title[:150]}"'
+                
+                meta["notes"] = f'TikTok by @{author}: "{title[:180]}"'
                 if data.get("thumbnail_url"):
                     meta["image_url"] = data.get("thumbnail_url")
+
+                # Parse restaurant handle or name
+                handles = re.findall(r"@([A-Za-z0-9_.]+)", title)
+                if handles:
+                    h = handles[0]
+                    clean_h = re.sub(r"(?:FoodTruck|Food|Truck)", " Food Truck", h, flags=re.I)
+                    clean_h = re.sub(r"([a-z])([A-Z])", r"\1 \2", clean_h)
+                    clean_h = clean_h.replace("_", " ").title().strip()
+                    meta["restaurant"] = clean_h
+                
+                title_lower = title.lower()
+                if "birria" in title_lower or "taco" in title_lower:
+                    meta["dish"] = "Giant Birria Taco"
+                elif "ramen" in title_lower:
+                    meta["dish"] = "Rich Tonkotsu Ramen"
+                elif "burger" in title_lower or "smashburger" in title_lower:
+                    meta["dish"] = "Double Smashburger"
+                elif "chicken" in title_lower:
+                    meta["dish"] = "Nashville Hot Chicken Sandwich"
+
+                # Parse address / location from pin emoji or text
+                loc_match = re.search(r"📍\s*@?[A-Za-z0-9_.]*\s*:\s*([^,\n\t]+(?:,\s*[^,\n\t]+)*)", title)
+                if loc_match:
+                    meta["location"] = loc_match.group(1).strip()
+                elif "san jose" in title_lower:
+                    meta["location"] = "San Jose, Bay Area"
+                elif "san francisco" in title_lower or "bay area" in title_lower:
+                    meta["location"] = "San Francisco, Bay Area"
         except Exception:
             pass
 
