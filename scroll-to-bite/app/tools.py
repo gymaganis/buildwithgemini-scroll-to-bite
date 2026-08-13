@@ -37,7 +37,7 @@ DEFAULT_WISHLIST: List[Dict[str, Any]] = [
         "dish": "Crispy Pork & Pate Banh Mi",
         "location": "San Jose, Bay Area",
         "url": "https://www.instagram.com/p/DbpFXyQBJYe/",
-        "image_url": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=80",
+        "image_url": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/766636377_18225547303325749_2364142524014738462_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=Mzk1NjcxNzM3MjM1ODAzOTA3MDE4MjI1NTQ3MzAwMzI1NzQ5.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEyMDYuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=54Ym9zM4rVYQ7kNvwFeMYAo&_nc_oc=AdoPN7cNKB4-ILn3yEVMljTTFH9exaT6JpsqE2DR5sKh6VV8adwdM_UApgMpso1XosM&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=y__d8QD3bGJToN55grXaeg&_nc_ss=7e60f&oh=00_AQEf0e_djMhr-mQtqZssxXyh1o3XvO6ZUfWEiGRl0vXrBw&oe=6A843F45",
         "status": "Want to Try",
         "notes": "221 E San Fernando St, San Jose — Viral banh mi post on Instagram",
     },
