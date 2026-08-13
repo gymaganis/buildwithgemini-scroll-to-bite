@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "restaurant": "L'Industrie Pizzeria",
+    "dish": "Burrata Slice & Hot Honey",
+    "location": "New York, NYC",
+    "url": "https://www.tiktok.com/@foodie/video/7123456789",
+    "status": "Want to Try",
+    "notes": "Viral TikTok pizza slice in Williamsburg & West Village"
+  },
+  {
+    "id": "2",
+    "restaurant": "7th Street Burger",
+    "dish": "Double Cheeseburger & Loaded Fries",
+    "location": "New York, NYC",
+    "url": "https://www.instagram.com/reel/C123456789",
+    "status": "Want to Try",
+    "notes": "Classic NYC smash burger trending on IG"
+  },
+  {
+    "id": "3",
+    "restaurant": "Marugame Udon",
+    "dish": "Nikutama Udon & Tempura",
+    "location": "San Francisco, Bay Area",
+    "url": "https://www.tiktok.com/@bayareaeats/video/7987654321",
+    "status": "Want to Try",
+    "notes": "Handmade sanuki udon in SF Stonestown & Berkeley"
+  },
+  {
+    "id": "4",
+    "restaurant": "Howlin' Ray's",
+    "dish": "Sando (Nashville Hot Chicken Sandwich)",
+    "location": "Los Angeles, SoCal",
+    "url": "https://www.instagram.com/reel/C987654321",
+    "status": "Want to Try",
+    "notes": "Chinatown LA viral hot chicken sando"
+  },
+  {
+    "id": "5",
+    "restaurant": "SomiSomi",
+    "dish": "Signature Dish",
+    "location": "Mountain View, CA",
+    "url": "https://www.tiktok.com/@foodie/video/somisomi",
+    "status": "Want to Try",
+    "notes": "Saved from shared social media link"
+  }
+]
