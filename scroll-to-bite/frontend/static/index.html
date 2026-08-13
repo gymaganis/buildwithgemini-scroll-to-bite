@@ -648,8 +648,10 @@ function buildNode(id, comps, visited) {
       }
 
       img.onerror = () => {
-        if (!img.src.includes("/image-proxy")) {
+        if (!img.src.includes("/image-proxy") && (rawSrc.includes("cdninstagram.com") || rawSrc.includes("scontent") || rawSrc.includes("fbcdn"))) {
           img.src = "/image-proxy?url=" + encodeURIComponent(rawSrc);
+        } else {
+          img.src = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80";
         }
       };
 

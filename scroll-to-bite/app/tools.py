@@ -37,7 +37,7 @@ DEFAULT_WISHLIST: List[Dict[str, Any]] = [
         "dish": "Crispy Pork & Pate Banh Mi",
         "location": "San Jose, Bay Area",
         "url": "https://www.instagram.com/p/DbpFXyQBJYe/",
-        "image_url": "https://images.unsplash.com/photo-1626804475297-4160820cca34?auto=format&fit=crop&w=600&q=80",
+        "image_url": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=80",
         "status": "Want to Try",
         "notes": "221 E San Fernando St, San Jose — Viral banh mi post on Instagram",
     },

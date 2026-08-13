@@ -193,20 +193,30 @@ async def chat(req: Request):
 
 
 @app.get("/image-proxy")
-async def image_proxy(url: str):
+async def image_proxy(req: Request):
+    import urllib.parse
     from fastapi.responses import Response
+    qs = req.scope.get("query_string", b"").decode("utf-8")
+    if "url=" in qs:
+        target_url = urllib.parse.unquote(qs.split("url=", 1)[1])
+    else:
+        return JSONResponse(status_code=400, content={"error": "Missing url parameter"})
+
+    print("DEBUG PROXY TARGET_URL:", target_url, flush=True)
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
     }
     try:
         async with httpx.AsyncClient(follow_redirects=True, timeout=15) as client:
-            resp = await client.get(url, headers=headers)
+            resp = await client.get(target_url, headers=headers)
+            print("DEBUG PROXY STATUS:", resp.status_code, flush=True)
             if resp.status_code == 200:
                 content_type = resp.headers.get("content-type", "image/jpeg")
                 return Response(content=resp.content, media_type=content_type)
-    except Exception:
-        pass
+    except Exception as e:
+        print("DEBUG PROXY EXCEPTION:", e, flush=True)
     return JSONResponse(status_code=404, content={"error": "Image proxy failed"})
 
 
