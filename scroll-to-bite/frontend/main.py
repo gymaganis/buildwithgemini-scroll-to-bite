@@ -192,6 +192,24 @@ async def chat(req: Request):
     return JSONResponse({"parts": parts})
 
 
+@app.get("/image-proxy")
+async def image_proxy(url: str):
+    from fastapi.responses import Response
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+    }
+    try:
+        async with httpx.AsyncClient(follow_redirects=True, timeout=15) as client:
+            resp = await client.get(url, headers=headers)
+            if resp.status_code == 200:
+                content_type = resp.headers.get("content-type", "image/jpeg")
+                return Response(content=resp.content, media_type=content_type)
+    except Exception:
+        pass
+    return JSONResponse(status_code=404, content={"error": "Image proxy failed"})
+
+
 # Serve the chat UI (keep this mount last so /chat wins).
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
 

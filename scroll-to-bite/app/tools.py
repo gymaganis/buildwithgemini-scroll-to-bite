@@ -67,9 +67,9 @@ DEFAULT_WISHLIST: List[Dict[str, Any]] = [
         "dish": "All-You-Can-Eat Hotpot Buffet",
         "location": "Bay Area",
         "url": "https://www.instagram.com/p/DawZsF2p36I/",
-        "image_url": "https://scontent-ord5-1.cdninstagram.com/v/t51.82787-15/480436440_611181824795908_6476566453913076822_n.jpg?stp=dst-jpg_e35_q80_s1080x1080_tt6&_nc_ht=scontent-ord5-1.cdninstagram.com&_nc_cat=106&_nc_oc=Q6cZ2AGXnS7bT8_yXq2Xm_y4W5yB8&_nc_ohc=8x2Y0Wp2n38Q7kNvgE5S63v&_nc_gid=0&edm=AIdR37sEAAAA&ccb=7-5&oh=00_AYC30Q&oe=67B25000&_nc_sid=22eebe",
+        "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80",
         "status": "Want to Try",
-        "notes": "Bay Area — Viral Instagram reel post",
+        "notes": "Bay Area — Best-value hotpot buffet featured on Instagram",
     },
     {
         "id": "6",
@@ -261,14 +261,24 @@ def fetch_social_url_metadata(url: str) -> dict:
                         cap_lower = clean_caption.lower()
                         if "hotpot" in cap_lower:
                             meta["dish"] = "All-You-Can-Eat Hotpot Buffet"
+                            if not meta["image_url"]:
+                                meta["image_url"] = "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
                         elif "banh mi" in cap_lower:
                             meta["dish"] = "Crispy Pork & Pate Banh Mi"
+                            if not meta["image_url"]:
+                                meta["image_url"] = "https://images.unsplash.com/photo-1626804475297-4160820cca34?auto=format&fit=crop&w=800&q=80"
                         elif "ramen" in cap_lower:
                             meta["dish"] = "Rich Tonkotsu Ramen"
+                            if not meta["image_url"]:
+                                meta["image_url"] = "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
                         elif "pizza" in cap_lower:
                             meta["dish"] = "Artisanal Slice"
+                            if not meta["image_url"]:
+                                meta["image_url"] = "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
                         elif "taco" in cap_lower or "birria" in cap_lower:
                             meta["dish"] = "Giant Birria Taco"
+                            if not meta["image_url"]:
+                                meta["image_url"] = "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80"
 
                         loc_match = re.search(r"📍\s*([^,\n]+(?:,\s*[^,\n]+)*)", clean_caption)
                         if loc_match and not meta["location"]:

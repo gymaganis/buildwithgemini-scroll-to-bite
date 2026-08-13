@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
 <title>ScrollToBite — Peak Eats Only ⚡</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -633,11 +634,25 @@ function buildNode(id, comps, visited) {
     case "Divider":
       return el("hr", "a2divider");
     case "Image": {
-      const src = boundStr(props.url || props.src);
-      if (!/^https?:\/\//i.test(src)) return null;
+      const rawSrc = boundStr(props.url || props.src);
+      if (!/^https?:\/\//i.test(rawSrc)) return null;
       const wrap = el("div", "a2img-container");
       const img = el("img", "a2img");
-      img.src = src;
+      img.referrerPolicy = "no-referrer";
+      
+      // Use image-proxy for Instagram/Facebook CDN images to bypass hotlink protection
+      if (rawSrc.includes("cdninstagram.com") || rawSrc.includes("scontent") || rawSrc.includes("fbcdn")) {
+        img.src = "/image-proxy?url=" + encodeURIComponent(rawSrc);
+      } else {
+        img.src = rawSrc;
+      }
+
+      img.onerror = () => {
+        if (!img.src.includes("/image-proxy")) {
+          img.src = "/image-proxy?url=" + encodeURIComponent(rawSrc);
+        }
+      };
+
       img.alt = boundStr(props.alt) || "Food spot photo";
       wrap.appendChild(img);
       return wrap;
