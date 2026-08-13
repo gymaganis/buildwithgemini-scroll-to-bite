@@ -220,14 +220,21 @@ def fetch_social_url_metadata(url: str) -> dict:
                 with urllib.request.urlopen(req, timeout=5) as resp:
                     raw_html = resp.read().decode("utf-8", errors="ignore")
                     
-                    # Extract high-res cover image from Instagram embed HTML
-                    all_img_urls = re.findall(r'(https://[^\s\"\'\<\>]+?(?:cdninstagram|scontent)[^\s\"\'\<\>]+)', raw_html)
-                    for u in all_img_urls:
-                        u_clean = html_lib.unescape(u)
-                        if any(k in u_clean for k in ['t51.82787-15', 't51.2885-15', 'ig_cache_key', 'video_default_cover_frame', 'dst-jpg']):
-                            if 's150x150' not in u_clean and 's100x100' not in u_clean:
-                                meta["image_url"] = u_clean
-                                break
+                    # Extract exact main post cover image from Instagram embed HTML
+                    main_img_match = re.search(r'<img[^>]+class="[^"]*EmbeddedMediaImage[^"]*"[^>]+src="([^"]+)"', raw_html)
+                    if not main_img_match:
+                        main_img_match = re.search(r'<img[^>]+src="([^"]+)"[^>]+class="[^"]*EmbeddedMediaImage[^"]*"', raw_html)
+
+                    if main_img_match:
+                        meta["image_url"] = html_lib.unescape(main_img_match.group(1))
+                    else:
+                        all_img_urls = re.findall(r'(https://[^\s\"\'\<\>]+?(?:cdninstagram|scontent)[^\s\"\'\<\>]+)', raw_html)
+                        for u in all_img_urls:
+                            u_clean = html_lib.unescape(u)
+                            if any(k in u_clean for k in ['t51.82787-15', 'video_default_cover_frame', 'dst-jpg']):
+                                if not any(sz in u_clean for sz in ['s150x150', 's100x100', 'p240x240', 's240x240']):
+                                    meta["image_url"] = u_clean
+                                    break
 
                     cap_match = re.search(r'class="Caption"[^>]*>(.*?)</div>', raw_html, re.S)
                     if cap_match:
@@ -284,7 +291,10 @@ def fetch_social_url_metadata(url: str) -> dict:
                         if loc_match and not meta["location"]:
                             loc_str = loc_match.group(1).strip()
                             loc_str = re.sub(r"View all.*$", "", loc_str, flags=re.I).strip()
-                            meta["location"] = loc_str
+                            if len(loc_str) < 50:
+                                meta["location"] = loc_str
+                            else:
+                                meta["location"] = "Bay Area"
                         elif "san jose" in cap_lower or "sjsu" in cap_lower:
                             meta["location"] = "San Jose, Bay Area"
                         elif "san francisco" in cap_lower or "sf" in cap_lower:
